@@ -4,6 +4,8 @@ import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from "./home/home.component";
+import { ContactComponent } from "./contact/contact.component";
+import { AboutComponent } from "./about/about.component";
 import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
 
@@ -38,7 +40,9 @@ import { baseURL} from './shared/baseurl';
         AppComponent,
         MenuComponent,
         DishdetailComponent,
-        HomeComponent
+        HomeComponent,
+        AboutComponent,
+        ContactComponent
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
