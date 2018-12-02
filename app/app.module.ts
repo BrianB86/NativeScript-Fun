@@ -7,6 +7,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
 
 import { DishService } from "./services/dish.service";
 import { MenuComponent } from "./menu/menu.component";
+import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { ProcessHTTPMsgService } from "./services/process-httpmsg.service";
 
 import { baseURL} from './shared/baseurl';
@@ -29,7 +30,8 @@ import { baseURL} from './shared/baseurl';
     ],
     declarations: [
         AppComponent,
-        MenuComponent
+        MenuComponent,
+        DishdetailComponent
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
