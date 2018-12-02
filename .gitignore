@@ -4,5 +4,5 @@ tags
 **/*.metadata.json
 
 app/**/*.js
-app/global.d.tags
+app/global.d.ts
 platforms
