@@ -1,5 +1,8 @@
 <RadSideDrawer [drawerTransition]="sideDrawerTransition">
         <GridLayout tkDrawerContent rows="auto, *" class="sidedrawer sidedrawer-left">
+          <GridLayout columns="auto" class="sidedrawer-list-item" [class.selected]="isComponentSelected('/home')" (tap)="onNavItemTap('/home')">
+            <Label col="1" text="Home" class="sidedrawer-list-item-text"></Label>
+          </GridLayout>
             <GridLayout row="0" class="sidedrawer-header" rows="auto" columns="100, *">
                     <Image row="0" col="0" src="~/images/logo.png" class="sidedrawer-header-image"></Image>
                     <Label row="0" col="1" text="Ristorante Con Fusion" class="sidedrawer-header-brand" textWrap="true"></Label>

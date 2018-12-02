@@ -3,6 +3,10 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 import { AppRoutingModule } from "./app.routing";
 import { AppComponent } from "./app.component";
 import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from "./home/home.component";
+import { PromotionService } from "./services/promotion.service";
+import { LeaderService } from "./services/leader.service";
+
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
 import { DishService } from "./services/dish.service";
@@ -33,11 +37,14 @@ import { baseURL} from './shared/baseurl';
     declarations: [
         AppComponent,
         MenuComponent,
-        DishdetailComponent
+        DishdetailComponent,
+        HomeComponent
     ],
     providers: [
         {provide: 'baseURL', useValue: baseURL},
         DishService,
+        PromotionService,
+        LeaderService,
         ProcessHTTPMsgService
     ],
     schemas: [
