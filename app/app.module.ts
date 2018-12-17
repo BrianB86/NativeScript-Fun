@@ -8,6 +8,7 @@ import { ContactComponent } from "./contact/contact.component";
 import { AboutComponent } from "./about/about.component";
 import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
+import { FavoriteService } from './services/favorite.service';
 
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -49,7 +50,8 @@ import { baseURL} from './shared/baseurl';
         DishService,
         PromotionService,
         LeaderService,
-        ProcessHTTPMsgService
+        ProcessHTTPMsgService,
+        FavoriteService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
