@@ -6,6 +6,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { FavoriteService } from '../services/favorite.service';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import { Toasty } from 'nativescript-toasty';
 import { switchMap } from 'rxjs/operators';
 
 @Component({

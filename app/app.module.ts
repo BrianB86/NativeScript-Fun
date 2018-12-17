@@ -9,6 +9,11 @@ import { AboutComponent } from "./about/about.component";
 import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
 import { FavoriteService } from './services/favorite.service';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { NavtiveScriptUIListViewModule } from 'nativescript-ui-listview/angular';
+import { NativeScriptFormsModule } from "nativescript-angular/forms";
+import { ReactiveFormsModule } from '@angular/forms';
+import { ReservationComponent } from './reservation/reservation.component';
 
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -17,6 +22,7 @@ import { MenuComponent } from "./menu/menu.component";
 import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angular";
 import { DishdetailComponent } from "./dishdetail/dishdetail.component";
 import { ProcessHTTPMsgService } from "./services/process-httpmsg.service";
+import { ReservationModalComponent } from "./reservationmodal/reservationmodal.component";
 
 import { baseURL} from './shared/baseurl';
 
@@ -35,7 +41,10 @@ import { baseURL} from './shared/baseurl';
         NativeScriptHttpModule,
         HttpClientModule,
         AppRoutingModule,
-        NativeScriptUISideDrawerModule
+        NativeScriptUISideDrawerModule,
+        NavtiveScriptUIListViewModule,
+        NativeScriptFormsModule,
+        ReactiveFormsModule
     ],
     declarations: [
         AppComponent,
@@ -43,8 +52,13 @@ import { baseURL} from './shared/baseurl';
         DishdetailComponent,
         HomeComponent,
         AboutComponent,
-        ContactComponent
+        ContactComponent,
+        FavoritesComponent,
+        ReservationComponent,
+        ReservationModalComponent
     ],
+    entryComponents: [ReservationModalComponent],
+
     providers: [
         {provide: 'baseURL', useValue: baseURL},
         DishService,
