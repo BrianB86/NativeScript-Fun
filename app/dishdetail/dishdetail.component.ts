@@ -7,11 +7,12 @@ import { RouterExtensions } from 'nativescript-angular/router';
 import { FavoriteService } from '../services/favorite.service';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { Toasty } from 'nativescript-toasty';
+import { action } from "tns-core-modules/ui/dialogs";
 import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-dishdetail',
-    moduleId: module.id,
+  moduleId: module.id,
   templateUrl: './dishdetail.component.html',
   styleUrls: ['./dishdetail.component.css']
 })
@@ -37,14 +38,14 @@ export class DishdetailComponent implements OnInit {
     this.route.params
       .pipe(switchMap((params: Params) => this.dishservice.getDish(params['id'])))
       .subscribe(dish => {
-          this.dish = dish;
-          this.favorite = this.favoriteservice.isFavorite(this.dish.id);
-          this.numcomments = this.dish.comments.length;
+        this.dish = dish;
+        this.favorite = this.favoriteservice.isFavorite(this.dish.id);
+        this.numcomments = this.dish.comments.length;
 
-          let total = 0;
-          this.dish.comments.forEach(comment => total += comment.rating);
-          this.avgstars = (total/this.numcomments).toFixed(2);
-        },
+        let total = 0;
+        this.dish.comments.forEach(comment => total += comment.rating);
+        this.avgstars = (total / this.numcomments).toFixed(2);
+      },
         errmess => { this.dish = null; this.errMess = <any>errmess; });
   }
 
@@ -52,12 +53,25 @@ export class DishdetailComponent implements OnInit {
     if (!this.favorite) {
       console.log('Adding to Favorites', this.dish.id);
       this.favorite = this.favoriteservice.addFavorite(this.dish.id);
-      const toast = new Toasty("Added Dish "+ this.dish.id, "short", "bottom");
+      const toast = new Toasty("Added Dish " + this.dish.id, "short", "bottom");
       toast.show();
     }
   }
 
   goBack(): void {
     this.routerExtensions.back();
+  }
+
+  showMenu() {
+    let options = {
+      title: "Race selection",
+      message: "Choose your race",
+      cancelButtonText: "Cancel",
+      actions: ["Human", "Elf", "Dwarf", "Orc", "Unicorn"]
+    };
+
+    action(options).then((result) => {
+      console.log(result);
+    });
   }
 }
