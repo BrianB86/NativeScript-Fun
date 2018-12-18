@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comment';
+import { CommentComponent } from "../comment/comment.component";
 import { DishService } from '../services/dish.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
@@ -34,6 +35,7 @@ export class DishdetailComponent implements OnInit {
     private fonticon: TNSFontIconService,
     private modalService: ModalDialogService,
     private viewContainerRef: ViewContainerRef,
+
     @Inject('baseURL') private baseURL) { }
 
   ngOnInit() {
@@ -89,11 +91,6 @@ export class DishdetailComponent implements OnInit {
     this.modalService.showModal(CommentComponent, options)
       .then((result: any) => {
         this.dish.comments.push(result);
-        this.dishservice.putDish(this.dish)
-          .subscribe(dish => {
-            this.dish = dish;
-          },
-            errmess => { this.dish = null; this.errMess = <any>errmess; });
       });
   }
 }

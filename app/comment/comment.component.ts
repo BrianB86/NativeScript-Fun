@@ -3,12 +3,15 @@ import { ModalDialogParams } from 'nativescript-angular/modal-dialog';
 import { TextField } from 'ui/text-field';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { Page } from 'ui/page';
+import {Slider} from "tns-core-modules/ui/slider";
+import {TextView} from "tns-core-modules/ui/text-view";
+
 
 @Component({
   moduleId: module.id,
   templateUrl: './comment.component.html'
 })
-export class CommentComponent implements OnInit {
+export class CommentComponent {
 
   comment: FormGroup
 
@@ -21,10 +24,6 @@ export class CommentComponent implements OnInit {
       comment: ['', [Validators.required]],
       date: ['', Validators.required]
     });
-
-  }
-
-  ngOnInit() {
 
   }
 

@@ -3,6 +3,8 @@ import { NavigationEnd, Router } from "@angular/router";
 import * as app from "application";
 import { RouterExtensions } from "nativescript-angular/router";
 import { DrawerTransitionBase, RadSideDrawer, SlideInOnTopTransition } from "nativescript-ui-sidedrawer";
+import { login, LoginResult } from "ui/dialogs";
+import { getString, setString } from "application-settings";
 import { filter } from "rxjs/operators";
 
 @Component({
@@ -44,4 +46,23 @@ export class AppComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.closeDrawer();
     }
+
+    displayLoginDialog() {
+    let options = {
+        title: "Login",
+        message: 'Type Your Login Credentials',
+        userName: getString("userName", ""),
+        password: getString("password",""),
+        okButtonText: "Login",
+        cancelButtonText: "Cancel"
+    }
+
+    login(options)
+        .then((loginResult: LoginResult) => {
+            setString("userName", loginResult.userName);
+            setString("password", loginResult.password);
+        },
+        () => { console.log('Login cancelled');
+    });
+}
 }

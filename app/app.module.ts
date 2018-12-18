@@ -15,6 +15,7 @@ import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReservationComponent } from './reservation/reservation.component';
 import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+import { CouchbaseService } from './services/couchbase.service';
 
 
 import { NativeScriptHttpModule } from "nativescript-angular/http";
@@ -70,7 +71,8 @@ import { baseURL} from './shared/baseurl';
         PromotionService,
         LeaderService,
         ProcessHTTPMsgService,
-        FavoriteService
+        FavoriteService,
+        CouchbaseService
     ],
     schemas: [
         NO_ERRORS_SCHEMA
