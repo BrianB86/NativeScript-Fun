@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, ViewContainerRef } from '@angular/core';
 import { Dish } from '../shared/dish';
 import { Comment } from '../shared/comment';
 import { DishService } from '../services/dish.service';
@@ -6,6 +6,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { RouterExtensions } from 'nativescript-angular/router';
 import { FavoriteService } from '../services/favorite.service';
 import { TNSFontIconService } from 'nativescript-ngx-fonticon';
+import { ModalDialogService, ModalDialogOptions } from "nativescript-angular/modal-dialog";
 import { Toasty } from 'nativescript-toasty';
 import { action } from "tns-core-modules/ui/dialogs";
 import { switchMap } from 'rxjs/operators';
@@ -31,6 +32,8 @@ export class DishdetailComponent implements OnInit {
     private routerExtensions: RouterExtensions,
     private favoriteservice: FavoriteService,
     private fonticon: TNSFontIconService,
+    private modalService: ModalDialogService,
+    private viewContainerRef: ViewContainerRef,
     @Inject('baseURL') private baseURL) { }
 
   ngOnInit() {
@@ -64,14 +67,33 @@ export class DishdetailComponent implements OnInit {
 
   showMenu() {
     let options = {
-      title: "Race selection",
-      message: "Choose your race",
+      title: "Actions",
       cancelButtonText: "Cancel",
-      actions: ["Human", "Elf", "Dwarf", "Orc", "Unicorn"]
+      actions: ["Add to Favorites", "Add Comment"]
     };
 
     action(options).then((result) => {
-      console.log(result);
+      if (result.localeCompare("Add to Favorites")) {
+        this.addToFavorites();
+      } else {
+        this.showModal();
+      }
     });
+  }
+
+  showModal() {
+    let options: ModalDialogOptions = {
+      viewContainerRef: this.viewContainerRef
+    };
+
+    this.modalService.showModal(CommentComponent, options)
+      .then((result: any) => {
+        this.dish.comments.push(result);
+        this.dishservice.putDish(this.dish)
+          .subscribe(dish => {
+            this.dish = dish;
+          },
+            errmess => { this.dish = null; this.errMess = <any>errmess; });
+      });
   }
 }

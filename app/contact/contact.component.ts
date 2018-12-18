@@ -6,7 +6,7 @@ import { Component, OnInit, Inject } from '@angular/core';
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class MenuComponent implements OnInit {
+export class ContactComponent implements OnInit {
 
   constructor() { }
 

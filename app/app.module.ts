@@ -10,10 +10,12 @@ import { PromotionService } from "./services/promotion.service";
 import { LeaderService } from "./services/leader.service";
 import { FavoriteService } from './services/favorite.service';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { NavtiveScriptUIListViewModule } from 'nativescript-ui-listview/angular';
+import { NativeScriptUIListViewModule } from "nativescript-ui-listview/angular";
 import { NativeScriptFormsModule } from "nativescript-angular/forms";
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReservationComponent } from './reservation/reservation.component';
+import { TNSFontIconModule } from 'nativescript-ngx-fonticon';
+
 
 import { NativeScriptHttpModule } from "nativescript-angular/http";
 
@@ -42,9 +44,12 @@ import { baseURL} from './shared/baseurl';
         HttpClientModule,
         AppRoutingModule,
         NativeScriptUISideDrawerModule,
-        NavtiveScriptUIListViewModule,
+        NativeScriptUIListViewModule,
         NativeScriptFormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        TNSFontIconModule.forRoot({
+          'fa': './fonts/font-awesome.min.css'
+        })
     ],
     declarations: [
         AppComponent,

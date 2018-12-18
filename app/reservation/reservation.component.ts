@@ -1,4 +1,3 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { TextField } from 'ui/text-field';
 import { Switch } from 'ui/switch';
 import { Validators, FormBuilder, FormGroup} from '@angular/forms';

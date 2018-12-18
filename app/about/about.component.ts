@@ -8,7 +8,7 @@ import { LeaderService } from '../services/leader.service';
   templateUrl: './about.component.html',
   styleUrls: ['./about.component.css']
 })
-export class MenuComponent implements OnInit {
+export class AboutComponent implements OnInit {
 
   leaders: Leader[];
   errMess: string;
