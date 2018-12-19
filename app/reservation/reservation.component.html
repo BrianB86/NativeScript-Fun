@@ -1,7 +1,8 @@
 <ActionBar title="Reserve Table" class="action-bar">
 </ActionBar>
-<ScrollView orientation="vertical" tkMainContent class="page">
+<StackLayout orientation="vertical" tkMainContent class="page">
     <GridLayout class="m-5" rows="auto auto auto auto" columns="*, *" [formGroup]="reservation">
+      <GridLayout id="formCard" row="0" margin="5" rows="* auto" columns="*" [visibility]="showFormCard ? 'visible' : 'collapsed'">
         <Label class="h3 m-15" row="0" col="0" text="No. of Guests" textWrap="true"></Label>
         <TextField class="input input-border" id="textGuests"
             hint="Enter Number of Guests" [text]=''
@@ -19,5 +20,14 @@
             row="2" col="1" formControlName="dateTime"></TextField>
         <Button class="btn btn-primary btn-active m-15" row="3" col="0"
             text="Submit" (tap)="onSubmit()"></Button>
+      </GridLayout>
+      <GridLayout id="resultCard" row="0" margin="5" rows="* auto" columns="*" [visibility]="showResultCard ? 'visible' : 'collapsed'">
+        <Label class="h3 m-15" row="0" col="0" text="No. of Guests" textWrap="true"></Label>
+        <Label text="reservation.guests" row="0" col="1"></Label>
+        <Label class="h3 m-15" row="1" col="0" text="Smoking?" textWrap="true"></Label>
+        <Label text="reservation.smoking" row="1" col="1"></Label>
+        <Label class="h3 m-15" row="2" col="0" text="Date and Time" textWrap="true"></Label>
+        <Label text="reservation.dateTime | date:'medium'" row="2" col="1"></Label>
+      </GridLayout>
     </GridLayout>
-</ScrollView>
+</StackLayout>

@@ -1,11 +1,11 @@
 <StackLayout class="modal-view-style">
   <GridLayout class="m-5" rows="auto auto auto auto" columns="*, *" [formGroup]="comment">
       <Label class="h3 m-15" row="0" col="0" text="Your Name" textWrap="true"></Label>
-      <TextField row="0" col="1" hint="Your Name" autocorrect="false" (textChange)="onAuthorChange($event)" class="input input-border"></TextField>
+      <TextField row="0" col="1" hint="Your Name" autocorrect="false" formControlName="author" (textChange)="onAuthorChange($event)" class="input input-border"></TextField>
       <Label class="h3 m-15" row="1" col="0" text="Rating" textWrap="true"></Label>
-      <Slider row="1" col="1" value="1" (valueChange)="onRatingValueChange($event)" minValue="1" maxValue="5"></Slider>
+      <Slider row="1" col="1" value="1" (valueChange)="onRatingValueChange($event)" formControlName="rating" minValue="1" maxValue="5"></Slider>
       <Label class="h3 m-15" row="2" col="0" text="Your Comments" textWrap="true"></Label>
-      <TextView (valueChange)="onCommentValueChange($event)" hint="Your Comments" [editable]="editState" class="input input-border"></TextView>
+      <TextView (valueChange)="onCommentValueChange($event)" hint="Your Comments" formControlName="comment" [editable]="editState" class="input input-border"></TextView>
     </GridLayout>
     <Button class="btn btn-primary btn-active" text="submit"
         (tap)="submit()"></Button>
