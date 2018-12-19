@@ -9,6 +9,8 @@ import { TNSFontIconService } from 'nativescript-ngx-fonticon';
 import { Page } from "ui/page";
 import { View } from "ui/core/view";
 import { SwipeGestureEventData, SwipeDirection } from "ui/gestures";
+import * as app from "application";
+import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as enums from "ui/enums";
 
 @Component({
@@ -187,6 +189,11 @@ export class HomeComponent implements OnInit {
       }
     }
   }
+
+  onDrawerButtonTap(): void {
+    const sideDrawer = <RadSideDrawer>app.getRootView();
+    sideDrawer.showDrawer();
+}
 
   ngOnInit() {
     this.dishservice.getFeaturedDish()
